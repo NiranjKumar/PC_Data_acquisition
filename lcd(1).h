@@ -120,4 +120,3 @@ void lcd_float(float f)
 	num=(f-num)*100;
 	lcd_integer(num);
 }
-
