@@ -27,3 +27,37 @@ void uart_str(unsigned char *s)
 		uart_tx(*s++);
 	}
 }
+void uart_integer(int n)
+{
+int arr[5],i=0;
+if (n==0)
+{
+uart_tx('0');
+}
+else
+{
+if(n<0)
+{
+uart_tx('-');
+n=-n;
+}
+while(n>0)
+{
+arr[i++]=n%10;
+n=n/10;
+}
+for(--i;i>=0;i--)
+{
+uart_tx(arr[i]+48);
+}
+}
+}
+void uart_float(float f)
+{
+int num;
+num=f;
+uart_integer(num);
+uart_tx('.');
+num=(f-num)*100;
+uart_integer(num);
+}
